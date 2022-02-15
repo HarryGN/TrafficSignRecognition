@@ -1,6 +1,6 @@
 # TrafficSignRecognition
 Traffic Sign Recognition Using Deep Learning on Self-Driving Cars
-##introduction
+## Introduction
 Self-driving cars are autonomous decision-making systems. They process data from sensors such 
 as cameras, LiDAR, RADAR, GPS, or inertia sensors. This data is then modeled using deep 
 learning algorithms, making decisions relevant to the car's environment. [1] This project
