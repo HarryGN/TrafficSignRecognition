@@ -34,8 +34,9 @@ Datasets for ML training purposes are very easy to find nowadays as people are a
 ### Preparation
 The dataset we are using is from kaggle.com. Traffic sign recognition cropped images. This dataset contains the cropped images of original datasets by GTSRB in jpg format. There are over 27000 training images and 12630 testing images. 
 <img align="left" width="282" height="282" src="https://user-images.githubusercontent.com/99308255/156477234-a2bc53cc-84bc-44ad-817a-c09a3d1605df.png">
-<img align="left" width="282" height="282" src="https://user-images.githubusercontent.com/99308255/156477264-86f11a87-8cf8-46cc-8687-109a8d340d7b.png"> 
 
+<img align="right" width="282" height="282" src="https://user-images.githubusercontent.com/99308255/156477264-86f11a87-8cf8-46cc-8687-109a8d340d7b.png"> 
+<br clear="right"/>
 Many users have verified this dataset at Kaggle,, and 100% of them are labeled valid by many users. [Figure 2] Here is a preview of these test data. This dataset is very realistic because they are taken at different periods and weathers,, and the lighten is real. [Figure 3]
 
 ## Reference
