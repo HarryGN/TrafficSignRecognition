@@ -21,3 +21,7 @@ detection, pictogram extraction, image filtering and classification. [2]
 This is an overall though map of how this CNN is implemented when spatial transformers have 
 been deployed -> determine noise (unique feature here) and do image filtering -> uses CNN for 
 extrusion and then uses a linear classifier [3]
+## Data Processing
+Data processing is the step I am responsible for and is very tightly connected with things my colleagues are about to do. I am taking this step very seriously as this is a deductive process for this traffic sign recognition network training. To be as realistic as possible, the team has agreed to use videos recorded from the DVRs. However, the data we need is only the traffic sign part. Suppose we insist on doing that, we will need to label every information and classify them. Therefore, it would still not be the best approach. 
+
+Here are two reasons. First is the significant limitation. The place that this vehicle has been to is minimal and would possibly give highly repeated images from the same perspective, and this is not ideal for a model to train. Second, the processing effort is possible. According to an open-source GitHub process, we need to extract frames and filter those images that do not include traffic signs. This step is taking too long and not ethical, considering we have a network to build afterward. Thus, I choose to look for pre-labeled data about traffic signs for ML training purposes and choose some of the pictures from DVRs to validate and test the model to match our initial objective of being realistic.
