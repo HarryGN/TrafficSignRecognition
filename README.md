@@ -33,7 +33,7 @@ Here are two reasons. First is the significant limitation. The place that this v
 Datasets for ML training purposes are very easy to find nowadays as people are aware of the importance of having clear and realistic data. Some authenticated sources are data.gov.in, Kaggle, and UCI dataset repository. The best study material can let the model learn to obtain the best test results.
 ### Preparation
 The dataset we are using is from kaggle.com. Traffic sign recognition cropped images. This dataset contains the cropped images of original datasets by GTSRB in jpg format. There are over 27000 training images and 12630 testing images. 
-<img align="left" width="340" height="282" src="https://user-images.githubusercontent.com/99308255/156477234-a2bc53cc-84bc-44ad-817a-c09a3d1605df.png">
+<img align="left" width="360" height="282" src="https://user-images.githubusercontent.com/99308255/156477234-a2bc53cc-84bc-44ad-817a-c09a3d1605df.png">
 
 <img align="right" width="340" height="282" src="https://user-images.githubusercontent.com/99308255/156477264-86f11a87-8cf8-46cc-8687-109a8d340d7b.png"> 
 <br clear="right"/>
