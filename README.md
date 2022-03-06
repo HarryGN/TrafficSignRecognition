@@ -44,7 +44,7 @@ Many users have verified this dataset at Kaggle,, and 100% of them are labeled v
 
 ## Appendix
 ### Updated Project Plan (Appendix A)
-Data Processing(Harry) including Future Plan:
+**Data Processing(Harry)** including Future Plan:
 
 The team will progress with the automatic cropping (and potential labeling) of DVR images derived by Harry. Proposed technique to be applied: “Instance segmentation learning”, however, the team will consult with TA to verify for feasibility and attain recommendation of the best-suited application for data processing for our project, inquiry currently proposed for research and TA question session:
 Would it be possible to train the model with more examples that have already been cropped and use the image labeled and cropped by the team as the validation and test data?
@@ -54,19 +54,21 @@ Cropping images from the DVR provided by Harry and label them so that the team c
 
 The team aims to simultaneously develop the network with its architecture and data processing. However, data processing is the most critical step in this model training process. It needs to be dealt with seriously to make sure the images and labels we use should be as authentic and valid as possible. Therefore, more datasets should be used to train and valia& test with our own data.
 
- The data processing step should be finished by March 2nd. this is the primary deadline we set for the project proposal. Since we already have the data we need for training, we can crop and resize the images from the DVR later and the team is proposing to finish the clean by March 10th. 
+ The data processing step should be finished by **March 2nd**. this is the primary deadline we set for the project proposal. Since we already have the data we need for training, we can crop and resize the images from the DVR later and the team is proposing to finish the clean by**March 10th.**
 
-Baseline Model(Mary) & Primary Model Classification layer(Lurui) including future plan:
+**Baseline Model(Mary) & Primary Model Classification layer(Lurui)** including future plan:
+
 Baseline Model is done mainly by Mary and the proposed baseline model was the SVM model, as it maintains a high accuracy but we can still try to improve on that as we gradually updating our knowledge:
 Adapt some tuning to the basic CNN model, modify the number of layers and get the training accuracy result. We can reduce the time consumed because we choose to use numbered training examples with the usage of GPU . this process will be done by Mar. 7th as we already have the train data.
-Resize the images from data processing again as SVM can only receive input of the same size. (224 x 224 pixels) [Deadline: Mar. 10th] Make sure that the input for the baseline model are the same for the model we are going to develop.
-After the final decision of the choice is made, the team needs to modify the overall documentation and include justifications for the choice. [Deadline: Mar. 20th]
+Resize the images from data processing again as SVM can only receive input of the same size. (224 x 224 pixels) **[Deadline: Mar. 10th]** Make sure that the input for the baseline model are the same for the model we are going to develop.
+After the final decision of the choice is made, the team needs to modify the overall documentation and include justifications for the choice. **[Deadline: Mar. 20th]**
    2.  The classification layer is part of the primary model and is responsible by Lurui 
 Classification layer in Primary model well optimized for the given 1x1000 linear output. This process may vary as we are not that that stage yet, the choice may differ.
 
-Primary Model Feature recognition layer(Zidong)
-The abnormally high result accuracy yielded from RESNET may be due to an error in the training function. Will review training function and dataset extraction program. [deadline: Mar. 7th]
-Attempt on different Transfer Learning model, MobileNet was proposed by Harry, should learn how to implement and attempt to compare results (only after 1 is completed). [deadline: March 14th]
-Will proceed to tweak on different hyperparameters to yield better results. [deadline: TBA, this is a continuous process and will change as the network is updated]
-Will conduct a question session with Class TA to ask proposed questions 1) about Data Processing and 2) about Feature Recognition layer as the question arises. [deadline: March 15th, during PRA session]
+**Primary Model Feature recognition layer(Zidong)**
+
+The abnormally high result accuracy yielded from RESNET may be due to an error in the training function. Will review training function and dataset extraction program. **[deadline: Mar. 7th]**
+Attempt on different Transfer Learning model, MobileNet was proposed by Harry, should learn how to implement and attempt to compare results (only after 1 is completed). **[deadline: March 14th]**
+Will proceed to tweak on different hyperparameters to yield better results. **[deadline: TBA, this is a continuous process and will change as the network is updated]**
+Will conduct a question session with Class TA to ask proposed questions 1) about Data Processing and 2) about Feature Recognition layer as the question arises. **[deadline: March 15th, during PRA session]**
 
