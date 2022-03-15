@@ -63,7 +63,7 @@ Adapt some tuning to the basic CNN model, modify the number of layers and get th
 Resize the images from data processing again as SVM can only receive input of the same size. (224 x 224 pixels) **[Deadline: Mar. 10th]** Make sure that the input for the baseline model are the same for the model we are going to develop.
 After the final decision of the choice is made, the team needs to modify the overall documentation and include justifications for the choice. **[Deadline: Mar. 20th]**
 
-**nThe classification layer is part of the primary model and is responsible by**
+**nThe classification layer is part of the primary model and is responsible (Lurui)**
 Classification layer in Primary model well optimized for the given 1x1000 linear output. This process may vary as we are not that that stage yet, the choice may differ.
 
 **Primary Model Feature recognition layer(Zidong)**
