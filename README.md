@@ -73,3 +73,4 @@ Attempt on different Transfer Learning model, MobileNet was proposed by Harry, s
 Will proceed to tweak on different hyperparameters to yield better results. **[deadline: TBA, this is a continuous process and will change as the network is updated]**
 Will conduct a question session with Class TA to ask proposed questions 1) about Data Processing and 2) about Feature Recognition layer as the question arises. **[deadline: March 15th, during PRA session]**
 
+google slides link is here: https://docs.google.com/presentation/d/1c1yA52jNVBeUff_oxPKxaeUUFvNcbpYi/edit#slide=id.p5
