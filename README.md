@@ -8,8 +8,12 @@ This project investigates how image recognition is used in self-driving cars, wh
 
 Deep CNN is a suitable tool to achieve our goal, as the algorithms allow the automatic detection of desired objects and has excellent functionality in categorizing common features in “similar” images, observing trends from mass input, and predicting the result into multiple classes. Thus, the system could “learn” better after each training process and as the number of samples increased. Figure 1 shows the general process plan of the project.
 
+<p align="center">
 <img width="452" alt="image" src="https://user-images.githubusercontent.com/99308255/163248262-676ad70e-452b-4854-97bb-f6ebd44d6308.png">
+</p>
+<p align="center">
 Figure 1. Process illustration
+</p>
 
 ## 2. Background & Related Works
 Many researchers have determined traffic sign recognition as the initial step for this process. This technique is generally divided into two parts, one is the detection which involves the use of Yolo, the other is the classification in a research paper conducted 2019 [3]. We are borrowing the same thought map and focusing on the development of traffic sign classification in deep CNN. The image segmentation and detection are done using an open-source code using YOLOv5from GitHub to make our piece complete and more useful in a general form [4]. YoloV5 is introduced in a research paper used in segmentation step [5] and traffic signs are cropped out for our model testing purposes. Since the requirement for training the dataset needs to be large and accurate. The training and validation dataset is obtained from CTS (Chinese Traffic Signs) [6].
@@ -18,65 +22,107 @@ Many researchers have determined traffic sign recognition as the initial step fo
 The data processing of the project consists of two steps: the first stage was to adapt an external online dataset for training and the second was to generate and collect our own dataset. The online source will serve as the training set and our own generated data will be used as the validation and testing set.
 
 During the first stage, the team obtained data from the Chinese Traffic Sign Database [6], which was supported by National Nature Science Foundation of China. The database consists of accurately cropped and labeled data where the classes are represented by numbers to increase efficiency. Figure 2 shows some of the sample data.
+
+<p align="center">
 <img width="252" alt="image" src="https://user-images.githubusercontent.com/99308255/163248531-b338214b-4ae6-4166-8a67-d11e9d65c79e.png">
+</p>
+<p align="center">
 Figure 2. Kaggle Sample Data
- 
+</p>
+
 To generate data by us, the team collected the street images in front of the university using phone camera and manually crop them into desired size. Image segmentation technique was applied to do the automatic detection and cropping. Figure 3 shows an example of the raw data. 
 
- <img width="135" alt="image" src="https://user-images.githubusercontent.com/99308255/163248595-10266b7b-d520-4d1d-9028-77e7e11fe257.png">
-
-Figure 3. Example of Raw Data
+<p align="center">
+<img width="135" alt="image" src="https://user-images.githubusercontent.com/99308255/163248595-10266b7b-d520-4d1d-9028-77e7e11fe257.png">
+</p>
  
+<p align="center">
+Figure 3. Example of Raw Data
+</p>
 Class names for new images are correspondence to the online open source. Images are uploaded and labeled [Figure 4].
 
-<img width="360" alt="image" src="https://user-images.githubusercontent.com/99308255/163248618-faf6943d-70f6-4464-834d-f8992c237297.png">
- 
+<p align="center">
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/99308255/163248618-faf6943d-70f6-4464-834d-f8992c237297.png"> 
+</p>
+<p align="center">
 Figure 4. Sample from Team’s Data
-
- <img width="360" alt="image" src="https://user-images.githubusercontent.com/99308255/163248635-7aacb0de-cfa8-42a6-8dab-42017e4d62a1.png">
-
+</p>
+ 
+<p align="center">
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/99308255/163248635-7aacb0de-cfa8-42a6-8dab-42017e4d62a1.png">
+</p>
+<p align="center">
 Figure 5. Correctly Labeled New Data
+</p>
 
 
-4. Architecture
- <img width="436" alt="image" src="https://user-images.githubusercontent.com/99308255/163248650-8264779a-fc9f-4c94-a05a-961f0d508c7d.png">
+## 4. Architecture
 
+<p align="center">
+<img width="436" alt="image" src="https://user-images.githubusercontent.com/99308255/163248650-8264779a-fc9f-4c94-a05a-961f0d508c7d.png">
+</p>
+<p align="center">
 Figure 6. ResNet Architecture overview
+</p>
 
 The team attempted VGG, GoogLeNet, and Resnet (regarding shared colab file), but ResNet yields the best accuracy overall. So, our prominent architecture is transfer learning based on ResNet 18. We chose ResNet (Residual Neural Network) because it is advanced from VGG19, our other proposed transfer learning model. ResNet is a CNN layer with 18 layers. Compared to ours with 3 CNN layers baseline, ResNet 18 has deeper layers, thus performing better on complicated tasks. Convolution with stride=2 is utilized for down sampling, and the model used global average pooling to replace our originally designated Fully connected classification layers. Like VGG, a Feature map is controlled such that as the size of the feather map is halved, the number of feature maps will correspond double. This model is well designed to perform various tasks. Moreover, we loaded its pre-trained feature to boost further our project to save time.  
+
 We employed above ResNet as python object from torchvision model=models.resnet.resnet18 with pretrained results imported. The classification layer is still FC like the baseline. It is defined as a function inbuilt in our resnet_model class via model.fc=nn.linear(), with input as the output number of layers from the ResNet and output 43 identical to our number of traffic sign classes. Then we attempt the usage of GPU of Google colab with “cuda:0” as a device to our Resnet model object. Regarding shared colab link for detail
 
 ## 5. Baseline Model 
-<img width="451" alt="image" src="https://user-images.githubusercontent.com/99308255/163248687-c5cf887c-b7ab-43a3-9ad7-030ea923f290.png">
 
- Figure 7. Baseline Architecture Overview
+<p align="center">
+<img width="451" alt="image" src="https://user-images.githubusercontent.com/99308255/163248687-c5cf887c-b7ab-43a3-9ad7-030ea923f290.png">
+</p>
+<p align="center"> 
+Figure 7. Baseline Architecture Overview
+</p>
 
 Our baseline model is a Simple Convolutional Neural Network with ANN Classifiers. This is adapted from in class examples. Proposed baseline model was with 2 convolutional layers + pooling layer, 2 FC layers with Relu applied, and with softmax activation applied. This is proposed to be simple and easy to train. However, seeing that our project’s complicated output (43 outputs after softmax), and the unsatisfactory result yield from original proposed architecture, we added one more convolutional layer and one more Classification ANN Layer, thus achieved a decent accuracy. 
 The finalized Baseline CNN model “BASE” is of 3 convolution layers with kernal2 stride2 pooling maxpool2d(2,2) applied after each for feature extraction; this is flattened using view (-1,_) to 512 units, and connected to a FC classification layer with 1 hidden layer with hidden units gradually decreasing at rate of 1/4 per layer progress thus reducing 512 down to 43 units, with softmax applied in crossentropyloss(). Predictions can thence be made. Regard shared colab link for detail.
 
 ## 6. Results
+
 To evaluate our model, the quantitative measures we took were:
-1. Compare the accuracy difference between the improved transfer learnings and the baseline model to see the extent of improvements.
-2. Compare the training accuracy with the testing accuracy of the same improved model to see whether the model overfits.
-3. Feed in the new unseen data (traffic sign images generated by us) and output the results. This will be introduced in detail in section 7.
+### 1. Compare the accuracy difference between the improved transfer learnings and the baseline model to see the extent of improvements.
+### 2. Compare the training accuracy with the testing accuracy of the same improved model to see whether the model overfits.
+### 3. Feed in the new unseen data (traffic sign images generated by us) and output the results. This will be introduced in detail in section 7.
  
 6.1 Accuracy of the Baseline Model
 Figure 8 shows the output of the baseline model, where the training accuracy reached 6.195% and the validation accuracy got 4.323%. The final test accuracy was 5.451%, urged the improved model to be applied.
- <img width="190" alt="image" src="https://user-images.githubusercontent.com/99308255/163248728-ace77a08-5ab4-41ac-8119-066fac26f83d.png">
 
+<p align="center"> 
+<img width="190" alt="image" src="https://user-images.githubusercontent.com/99308255/163248728-ace77a08-5ab4-41ac-8119-066fac26f83d.png">
+</p>
+<p align="center"> 
 Figure 8. Results for the Baseline Model
+</p>
 
 6.2 Accuracy of the Transfer Learning
 When the transfer learnings are applied, the overall accuracy gets greatly improved. The team used the GoogLeNet and ResNet to be the final model and both reached an accuracy above 90%, a significant improvement from the baseline model. That is, the model could accurately categorize the class of each traffic sign images with more than 90% of success possibility. This serves to be the first step towards automatic self-driving, where the vehicle could recognize the traffic sign images from the camera input and make accurate predictions on the actual road conditions.
 
-     <img width="133" alt="image" src="https://user-images.githubusercontent.com/99308255/163248764-802c84c9-1fee-40cb-9b29-e655da9dc2b8.png">
 
-               (a)                               (b)    <img width="140" alt="image" src="https://user-images.githubusercontent.com/99308255/163248780-928f5ae5-c0ef-4b6f-a051-94fbb730a455.png">
-
-                           (c) <img width="135" alt="image" src="https://user-images.githubusercontent.com/99308255/163248835-56d1f391-ccc1-44bd-a324-01bc5ee076a6.png">
-
-
+<p align="center">
+<img width="133" alt="image" src="https://user-images.githubusercontent.com/99308255/163248764-802c84c9-1fee-40cb-9b29-e655da9dc2b8.png">
+</p>
+<p align="center"> 
+(a) 
+</p>
+<p align="center"> 
+<img width="140" alt="image" src="https://user-images.githubusercontent.com/99308255/163248780-928f5ae5-c0ef-4b6f-a051-94fbb730a455.png">
+</p>
+<p align="center"> 
+(b)  
+</p>
+<p align="center"> 
+<img width="135" alt="image" src="https://user-images.githubusercontent.com/99308255/163248835-56d1f391-ccc1-44bd-a324-01bc5ee076a6.png">
+</p>
+<p align="center"> 
+(c)
+</p>
+<p align="center"> 
 Figure 9. History best results for (a) VGG; (b) GoogLeNet; (c) ResNet
+</p>
 
 From the results for those two transfer learnings, we observe that ResNet model yields a higher validation accuracy and the gap between the training and validation gets smaller as the number of iterations increases. Thus, ResNet is selected to be the final suitable model for our specific application.
 
@@ -84,19 +130,34 @@ However, there still exist some limitations to the model. First, the data input 
 
 7. Evaluation of the Model on the New Data
 The new data was obtained from traffic signs outside of the university. We also made some pre-processes for the testing convivence. We are aiming to test the model build for cropped traffic sign recognition, not the image segmentation. Therefore, traffic signs will then be cropped out first. We used iPhone camera when processing new data to evaluate the model. That been said these three images we chose have never been seen by the model and the output is purely based on the trained function to predict the result. The labels are put into a class which will output at the top of the output. Aside outputting a prediction, we also give the confidence of it in an array which is guided by equation:
+
+<p align="center"> 
 𝑐𝑜𝑛𝑓𝑖𝑑𝑒𝑛𝑐𝑒 = 𝑚𝑎𝑥(𝑠𝑜𝑓𝑡𝑚𝑎𝑥(𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑖𝑜𝑛))
-This is basically the probability of which of the class the image should be classified. Some output is show in the figure below. 
-<img width="282" alt="image" src="https://user-images.githubusercontent.com/99308255/163248858-63f3a890-7c2c-4ef3-996d-4dd8fb23cd0b.png">
-
+</p>
  
+This is basically the probability of which of the class the image should be classified. Some output is show in the figure below. 
+<p align="center"> 
+<img width="135" alt="image" src=(https://user-images.githubusercontent.com/99308255/163253110-e0cfef64-c841-462b-8cc3-89ec2870fb86.png)>
+</p>
+<p align="center"> 
 (a)
- <img width="294" alt="image" src="https://user-images.githubusercontent.com/99308255/163248873-c141bb66-573c-432f-a42a-99bceb25a7c4.png">
-
+</p>
+<p align="center"> 
+<img width="135" alt="image" src=(https://user-images.githubusercontent.com/99308255/163253172-1f18ff20-eefa-43ce-8273-bc5e67f3ed41.png)>
+</p>
+<p align="center"> 
 (b)
- <img width="290" alt="image" src="https://user-images.githubusercontent.com/99308255/163248887-2e1f728a-5aee-4161-9c47-fe416de49432.png">
-
+ </p>
+<p align="center"> 
+<img width="135" alt="image" src=(https://user-images.githubusercontent.com/99308255/163253211-3f20f293-a088-4d81-864e-523624a713bc.png)>
+</p>
+<p align="center"> 
 (c)
+ </p>
+<p align="center"> 
 Figure 10: Model Prediction for (a) Baseline; (b) GoogLeNet; (c)ResNet
+</p>
+
 
 Although the baseline model output the classification correctly, the confidence of which the image’s probability been classified into the class is low. The team has agreed that the correctness of the baseline model is purely by luck as demonstrated earlier that the training accuracy for the baseline model is ridiculously low. However, the confidence for the prediction in GoogLeNet and ResNet is very high, especially ResNet, which is obtaining 99.99% confidence for the first image, 99.94% for the second image, 100.00% for the third. From this comparison, the team has agreed that ResNet is the most reliable and precise in this demonstration, where the baseline model is the least.
 
